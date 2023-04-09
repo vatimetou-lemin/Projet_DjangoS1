@@ -1,0 +1,107 @@
+{% extends '../index.html' %}
+
+{% load static %}
+
+{% block content %}
+<div id="wrapper">
+
+        <!-- Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                    <p class="mb-4">Liste des voitures presents. </p>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>NumPlaque</th>
+                                            <th>Marque</th>
+                                            <th>Genre</th>
+                                             <th>Date</th>
+                                            <th>Couleur</th>
+                                            <th>Image</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for voiture in Voit %}
+                                        <tr>
+                                            <td>{{ voiture.plaque }}</td>
+                                            <td>{{ voiture.marque }}</td>
+                                            <td>{{ voiture.genre }}</td>
+                                            <td>{{voiture.date}}</td>
+                                            <td>{{ voiture.couleur }}</td>
+                                            {% if voiture.image %}
+                                                <td><img src="{{ voiture.image.url }}" style="width:180px;height:130px"></td>
+                                                {% else %}
+                                                <td></td>
+                                            {% endif %}
+                                           
+                                            <td><a href="{% url 'ModVoit' id=voiture.id %}" class="btn btn-primary">Editer</a>
+                                            <a  href="{% url 'suppVoiture' id=voiture.id %}" class="btn btn-danger">Supprimer</a></td>
+                                       
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

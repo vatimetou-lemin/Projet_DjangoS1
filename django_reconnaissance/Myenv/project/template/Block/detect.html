@@ -1,0 +1,19 @@
+{% extends '../index.html' %}
+{% load static %}
+
+{% block content %}
+<form class="user">
+    <div class="form-group ">
+        <div class="col-sm-6 mb-3 mb-sm-0 input-group ">
+        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+        <input type="File" class=" form-control form-control-user" name="img" id="inputGroupFile02">
+        </div>
+        <br>
+        <div class="col-sm-6 mb-3 mb-sm-0 input-group ">
+            <button type="submit" class="btn btn-primary btn-user btn-block">Enrigistrer</button>
+        </div>
+
+    </div>
+
+</form>
+{% endblock%}
